@@ -13,9 +13,10 @@ const mailerSend = new MailerSend({
 
 const sentFrom = new Sender(process.env.MAILERSEND_DOMAIN, "TimBERNIC");
 
-app.get("/", (req, res) => {
+app.post("/form", (req, res) => {
   try {
-    return res.status(200).json("bienvenue!!");
+    console.log(req.body);
+    return res.status(200).json(req.body);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
